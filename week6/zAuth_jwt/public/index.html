@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+</head>
+<body>
+    <form>
+    <label for="signup">signup</label>   
+    <input type="text" name="username" id="user-in">
+    <input type="password" name="password" id="pass-in">
+    <button type="button" onclick=signup()>submit</button><br>
+
+    <label for="signin">signin</label> 
+    <input type="text" name="username" id="user-signup">
+    <input type="password" name="password" id="pass-signup">
+    <button type="button" onclick="signin()" >submit</button><br>
+    </form>
+
+    <p>Userinfo:</p>
+    <div class="info"></div><br>
+
+    <button onclick=logout()>Log out</button>
+
+
+    <script>
+        async function signup(){
+            const username = document.getElementById("user-in").value;
+            const password = document.getElementById("pass-in").value;
+
+            //send request to backend
+            await axios.post("http://localhost:3000/signup",{
+                username:username,
+                password:password
+            });
+
+            alert("You are signed in");
+
+            document.getElementById("user-in").value="";
+            document.getElementById("pass-in").value="";
+        
+
+        }
+
+        async function signin(){
+            const username = document.getElementById("user-signup").value;
+            const password = document.getElementById("pass-signup").value;
+
+            const response = await axios.post("http://localhost:3000/signin", {
+                username:username,
+                password:password
+            })
+
+            localStorage.setItem("token", response.data.token);//local storage 
+
+            alert("you are signed in!");
+
+            document.getElementById("user-signup").value="";
+            document.getElementById("pass-signup").value="";            
+        }
+
+        async function getInfo(){
+            const response = await axios.get("http://localhost:3000/me",{
+                headers:{
+                    token : localStorage.getItem("token")
+                }
+            });
+            document.getElementsByClassName("info")[0].innerHTML = 
+                "Username: " + response.data.username + " <br> Pass: " + response.data.password;
+        }
+
+        getInfo();
+    </script>
+</body>
+</html>
+
+
