@@ -3,7 +3,7 @@
 This repository provides essential starter kits for building web applications, including commonly used middleware, JWT authentication, MongoDB integration, bcrypt for hashing, and Zod for validation.
 
 ## Table of Contents
-1. [Common Middleware]
-2. [JWT Authentication]
-3. [MongoDB Integration]
-4. [bcrypt + Zod]
+1. Common Middleware
+2. JWT Authentication
+3. MongoDB Integration
+4. bcrypt + Zod
