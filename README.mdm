@@ -4,8 +4,8 @@ This repository provides essential starter kits for building web applications, i
 
 ## Table of Contents
 1. **Common Middleware**
-2. **JWT Authentication**
-3. **MongoDB Integration**
-4. **bcrypt + Zod**
+2. **JWT Authentication** (week6)
+3. **MongoDB Integration** (week7)
+4. **bcrypt + Zod** (week7)
 
 copy paste on the go!!
